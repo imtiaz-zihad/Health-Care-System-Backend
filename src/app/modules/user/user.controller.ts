@@ -50,4 +50,5 @@ const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
 export const userController = {
   createPatient,
   getAllFromDB,
+  createAdmin,createDoctor
 };
