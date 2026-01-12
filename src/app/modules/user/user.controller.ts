@@ -35,8 +35,8 @@ const createAdmin = catchAsync(async (req: Request, res: Response) => {
   });
 });
 const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
-  const filters = pick(req.query, userFilterableFields);
-  const options = pick(req.query, ["page", "limit", "sortBy", "sortOrder"]);
+  const filters = pick(req.query, userFilterableFields); // Searching, filtering 
+  const options = pick(req.query, ["page", "limit", "sortBy", "sortOrder"]); // pagination & sorting 
 
   const result = await UserService.getAllFromDB(filters,options);
   sendResponse(res, {
