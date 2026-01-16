@@ -3,23 +3,19 @@ import { ScheduleController } from "./schedule.controller";
 import auth from "../../middlewares/auth";
 import { UserRole } from "../../generated/prisma/enums";
 
-
 const router = express.Router();
 
 router.get(
-    "/",
-    auth(UserRole.DOCTOR, UserRole.ADMIN),
-    ScheduleController.schedulesForDoctor
-)
+  "/",
+  auth(UserRole.DOCTOR, UserRole.ADMIN),
+  ScheduleController.schedulesForDoctor
+);
 
-router.post(
-    "/",
-    ScheduleController.insertIntoDB
-)
-
+router.post("/", auth(UserRole.ADMIN), ScheduleController.insertIntoDB);
 
 router.delete(
-    "/:id",
-    ScheduleController.deleteScheduleFromDB
-)
+  "/:id",
+  auth(UserRole.ADMIN),
+  ScheduleController.deleteScheduleFromDB
+);
 export const ScheduleRoutes = router;
