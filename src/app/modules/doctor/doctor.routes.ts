@@ -12,3 +12,5 @@ router.get(
 //     "/:id",
 //     DoctorController.updateIntoDB
 // )
+
+export const DoctorRoutes = router;

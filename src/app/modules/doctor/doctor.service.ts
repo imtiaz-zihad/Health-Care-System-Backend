@@ -20,15 +20,38 @@ const getAllFromDB = async (filters: any, options: IOptions) => {
     }));
   }
 
-  if(Object.keys(filterData).length >0){
-    const filterConditions = Object.keys(filterData).map((key)=>({
-        [key]:{
-            equals:(filterData as any )[key]
-        }
-    }))
+  if (Object.keys(filterData).length > 0) {
+    const filterConditions = Object.keys(filterData).map((key) => ({
+      [key]: {
+        equals: (filterData as any)[key],
+      },
+    }));
 
-    andConditions.push(...filterConditions)
+    andConditions.push(...filterConditions);
   }
+  const whereConditions: Prisma.DoctorWhereInput =
+    andConditions.length > 0 ? { AND: andConditions } : {};
+  const result = await prisma.doctor.findMany({
+    where: whereConditions,
+    skip,
+    take: limit,
+    orderBy: {
+      [sortBy]: sortOrder,
+    },
+  });
+
+  const total = await prisma.doctor.count({
+    where: whereConditions,
+  });
+
+  return {
+    meta: {
+      total,
+      page,
+      limit,
+    },
+    data: result,
+  };
 };
 
 // const updateIntoDB = async (id: string, payload: Partial<IDoctorUpdateInput>) => {
