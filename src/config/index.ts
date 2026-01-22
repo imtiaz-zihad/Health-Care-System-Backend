@@ -16,6 +16,7 @@ export default {
         secret: process.env.JWT_SECRET as string,
         expireIn: process.env.JWT_EXPIRES_IN as string,
         algorithm: process.env.JWT_ALGORITHM as string
-    }
+    },
+    openRouterApiKey: process.env.OPENROUTER_API_KEY
 
 }
