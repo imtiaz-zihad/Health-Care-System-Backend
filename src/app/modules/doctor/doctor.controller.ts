@@ -18,26 +18,26 @@ const getAllFromDB = catchAsync(async (req: Request, res: Response) => {
         success: true,
         message: "Doctor fetched successfully!",
         meta: result.meta,
-        data: result.meta
+        data: result.data
     })
 })
 
-// const updateIntoDB = catchAsync(async (req: Request, res: Response) => {
+const updateIntoDB = catchAsync(async (req: Request, res: Response) => {
 
-//     const { id } = req.params;
+    const { id } = req.params;
 
-//     const result = await DoctorService.updateIntoDB(id, req.body);
+    const result = await DoctorService.updateIntoDB(id, req.body);
 
-//     sendResponse(res, {
-//         statusCode: 200,
-//         success: true,
-//         message: "Doctor updated successfully!",
-//         data: result
-//     })
-// })
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Doctor updated successfully!",
+        data: result
+    })
+})
 
 
 export const DoctorController = {
     getAllFromDB,
-   // updateIntoDB
+    updateIntoDB
 }

@@ -29,10 +29,10 @@ const moduleRoutes = [
     path: "/specialties",
     route: SpecialtiesRoutes,
   },
-      {
-        path: '/doctor',
-        route: DoctorRoutes
-    },
+  {
+    path: "/doctor",
+    route: DoctorRoutes,
+  },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
