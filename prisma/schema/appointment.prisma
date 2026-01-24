@@ -8,26 +8,25 @@ model Appointment {
     schedule       Schedule          @relation(fields: [scheduleId], references: [id])
     videoCallingId String
     status         AppointmentStatus @default(SCHEDULED)
-    paymentStatus  PaymentStatus @default(UNPAID)
-    createAt       DateTime          @default(now())
-    updateAt       DateTime          @updatedAt
+    paymentStatus  PaymentStatus     @default(UNPAID)
+    createdAt      DateTime          @default(now())
+    updatedAt      DateTime          @updatedAt
     payment        Payment?
-    prescription  Prescription?
+    prescription   Prescription?
 
     @@map("appointments")
 }
 
 model Payment {
-    id            String      @id @default(uuid())
-    appointmentId String      @unique
-    appointment   Appointment @relation(fields: [appointmentId], references: [id])
-
+    id                 String        @id @default(uuid())
+    appointmentId      String        @unique
+    appointment        Appointment   @relation(fields: [appointmentId], references: [id])
     amount             Float
     transactionId      String        @unique
-    status             PaymentStatus 
+    status             PaymentStatus @default(UNPAID)
     paymentGatewayData Json?
-    createAt           DateTime      @default(now())
-    updateAt           DateTime      @updatedAt
+    creatdeAt          DateTime      @default(now())
+    updatedAt          DateTime      @updatedAt
 
     @@map("payments")
 }
@@ -42,8 +41,8 @@ model Prescription {
     patient       Patient     @relation(fields: [patientId], references: [id])
     instructions  String
     followUpdate  DateTime?
-    createAt      DateTime    @default(now())
-    updateAt      DateTime    @updatedAt
+    createdAt     DateTime    @default(now())
+    updatedAt     DateTime    @updatedAt
 
     @@map("prescriptions")
 }
