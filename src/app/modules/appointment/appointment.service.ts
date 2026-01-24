@@ -95,6 +95,8 @@ const createAppointment = async (
       cancel_url: `https://next.programming-hero.com/`,
     });
 
+    console.log(session);
+    
     return appointmentData;
   });
 
