@@ -16,7 +16,7 @@ const handleStripeWebhookEvent = async (event: Stripe.Event) => {
                     id: appointmentId
                 },
                 data: {
-                    paymentStatus: session.payment_status === "completed" ? PaymentStatus.PAID : PaymentStatus.UNPAID
+                    paymentStatus: session.payment_status === "paid" ? PaymentStatus.PAID : PaymentStatus.UNPAID
                 }
             })
 
@@ -25,7 +25,7 @@ const handleStripeWebhookEvent = async (event: Stripe.Event) => {
                     id: paymentId
                 },
                 data: {
-                    status: session.payment_status === "completed" ? PaymentStatus.PAID : PaymentStatus.UNPAID,
+                    status: session.payment_status === "paid" ? PaymentStatus.PAID : PaymentStatus.UNPAID,
                     paymentGatewayData: session
                 }
             })
