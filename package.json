@@ -8,9 +8,10 @@
     "schema": "./prisma/schema"
   },
   "scripts": {
+    "start": "node ./dist/server.ts",
     "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
-    "build": "tsc",
-    "lint": "eslint \"src/**/*.{ts,js}\""
+    "build": "npm install --forse && tsc",
+    "lint": "npx eslint ./src"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",
