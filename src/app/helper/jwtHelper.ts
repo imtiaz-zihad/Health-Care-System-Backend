@@ -2,6 +2,7 @@ import jwt, { JwtPayload, Secret, SignOptions } from "jsonwebtoken";
 import config from "../../config";
 
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
 const generateToken = (payload:any,secret: Secret,expiresIn: string) =>{
 
     

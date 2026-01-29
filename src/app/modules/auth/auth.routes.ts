@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import { AuthController } from "./auth.controller";
 import { UserRole } from "../../generated/prisma/enums";
 import auth from "../../middlewares/auth";

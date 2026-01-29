@@ -6,6 +6,7 @@ import { PaymentStatus } from "../../generated/prisma/enums";
 const handleStripeWebhookEvent = async (event: Stripe.Event) => {
     switch (event.type) {
         case "checkout.session.completed": {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const session = event.data.object as any;
 
             const appointmentId = session.metadata?.appointmentId;

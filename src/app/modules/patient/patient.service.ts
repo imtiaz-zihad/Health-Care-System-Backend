@@ -30,6 +30,7 @@ const getAllFromDB = async (
       AND: Object.keys(filterData).map((key) => {
         return {
           [key]: {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             equals: (filterData as any)[key],
           },
         };
@@ -102,6 +103,7 @@ const softDelete = async (id: string): Promise<Patient | null> => {
 
 // PatientHealthData, MedicalReport, patient
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const updateIntoDB = async (user: IJWTPayload, payload: any) => {
   const { medicalReport, patientHealthData, ...patientData } = payload;
 

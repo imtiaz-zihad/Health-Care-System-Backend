@@ -13,6 +13,7 @@ const handleStripeWebhookEvent = catchAsync(async (req: Request, res: Response) 
     let event;
     try {
         event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
         console.error("⚠️ Webhook signature verification failed:", err.message);
         return res.status(400).send(`Webhook Error: ${err.message}`);

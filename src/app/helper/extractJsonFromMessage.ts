@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const extractJsonFromMessage = (message: any) => {
     try {
         const content = message?.content || "";

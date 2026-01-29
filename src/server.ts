@@ -14,6 +14,7 @@ async function bootstrap() {
         });
 
         // Function to gracefully shut down the server
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const exitHandler = () => {
             if (server) {
                 server.close(() => {

@@ -90,6 +90,7 @@ const createDoctor = async (req: Request): Promise<Doctor> => {
   return result;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getAllFromDB = async (params: any, options: any) => {
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(options);
@@ -112,6 +113,7 @@ const getAllFromDB = async (params: any, options: any) => {
     andConditions.push({
       AND: Object.keys(filterData).map((key) => ({
         [key]: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           equals: (filterData as any)[key],
         },
       })),
@@ -190,6 +192,7 @@ const getMyProfile = async (user: IJWTPayload) => {
 };
 
 const changeProfileStatus = async (id: string, payload: { status: UserStatus }) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const userData = await prisma.user.findUniqueOrThrow({
         where: {
             id

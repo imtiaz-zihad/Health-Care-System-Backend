@@ -4,7 +4,7 @@ import { UserStatus } from "../../generated/prisma/enums";
 import { jwtHelper } from "../../helper/jwtHelper";
 import { prisma } from "../../shared/prisma";
 import bcrypt from "bcryptjs";
-import jwt, { Secret } from "jsonwebtoken";
+import  { Secret } from "jsonwebtoken";
 import httpStatus from "http-status";
 import emailSender from "./emailSender";
 
@@ -49,6 +49,7 @@ const refreshToken = async (token: string) => {
       token,
       config.jwt.refresh_token_secret as Secret,
     );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (err) {
     throw new Error("You are not authorized!");
   }
@@ -75,6 +76,7 @@ const refreshToken = async (token: string) => {
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const changePassword = async (user: any, payload: any) => {
   const userData = await prisma.user.findUniqueOrThrow({
     where: {
@@ -151,6 +153,7 @@ const resetPassword = async (
   token: string,
   payload: { id: string; password: string },
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const userData = await prisma.user.findUniqueOrThrow({
     where: {
       id: payload.id,
@@ -183,6 +186,7 @@ const resetPassword = async (
     },
   });
 };
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getMe = async (session: any) => {
   const accessToken = session.accessToken;
   const decodedData = jwtHelper.verifyToken(

@@ -18,6 +18,7 @@ const emailSender = async (
         }
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const info = await transporter.sendMail({
         from: '"PH Health Care" <shafayat.ph@gmail.com>', // sender address
         to: email, // list of receivers

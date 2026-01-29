@@ -50,6 +50,7 @@ const refreshToken = catchAsync(async (req: Request, res: Response) => {
 });
 
 const changePassword = catchAsync(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async (req: Request & { user?: any }, res: Response) => {
     const user = req.user;
 

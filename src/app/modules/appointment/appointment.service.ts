@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import ApiError from "../../errors/ApiError";
 import {
   AppointmentStatus,
@@ -104,6 +105,7 @@ const createAppointment = async (
 };
 const getMyAppointment = async (
   user: IJWTPayload,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   filters: any,
   options: IOptions,
 ) => {
@@ -130,6 +132,7 @@ const getMyAppointment = async (
   if (Object.keys(filterData).length > 0) {
     const filterConditions = Object.keys(filterData).map((key) => ({
       [key]: {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         equals: (filterData as any)[key],
       },
     }));

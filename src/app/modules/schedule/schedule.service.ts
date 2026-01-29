@@ -4,6 +4,7 @@ import { IOptions, paginationHelper } from "../../helper/paginationHelper";
 import { Prisma } from "../../generated/prisma/client";
 import { IJWTPayload } from "../../types/common";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const insertIntoDB = async (payload: any) => {
   const { startTime, endTime, startDate, endDate } = payload;
   const intervalTime = 30;
@@ -13,7 +14,7 @@ const insertIntoDB = async (payload: any) => {
   const lastDate = new Date(endDate);
 
   while (currentDate <= lastDate) {
-    let startDateTime = new Date(
+    const startDateTime = new Date(
       addMinutes(
         addHours(
           `${format(currentDate, "yyyy-MM-dd")}`,
@@ -66,6 +67,7 @@ const insertIntoDB = async (payload: any) => {
 
 const schedulesForDoctor = async (
   user: IJWTPayload,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fillters: any,
   options: IOptions
 ) => {

@@ -5,6 +5,7 @@ import ApiError from "../errors/ApiError";
 import httpStatus from "http-status";
 
  const auth = (...roles: string[]) => {
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
    return  async(req: Request &{user?: any},res:Response, next: NextFunction) =>{
         try {
             const token = req.cookies.accessToken;

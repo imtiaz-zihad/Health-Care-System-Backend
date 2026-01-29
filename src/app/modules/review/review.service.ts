@@ -1,10 +1,11 @@
-import { hasAutoParseableInput } from "openai/lib/parser";
+
 import { prisma } from "../../shared/prisma";
 import { IJWTPayload } from "../../types/common";
 import ApiError from "../../errors/ApiError";
 import httpStatus from 'http-status'
 
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const insertIntoDB = async (user: IJWTPayload, payload: any) => {
     const patientData = await prisma.patient.findUniqueOrThrow({
         where: {

@@ -18,6 +18,7 @@ const calculatePagination = (options: IOptions): IOptionResult => {
   const limit: number = Number(options.limit) || 10;
   const skip: number = (Number(page) - 1) * limit;
 
+  // eslint-disable-next-line no-constant-binary-expression
   const sortBy: string = options.sortBy || "createdAt" ||"createAt";
   const sortOrder: string = options.sortOrder || "desc";
 

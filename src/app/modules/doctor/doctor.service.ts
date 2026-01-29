@@ -1,5 +1,4 @@
 import httpStatus from "http-status";
-import { Payload } from "./../../generated/prisma/internal/prismaNamespace";
 import { Doctor, Prisma, UserStatus } from "../../generated/prisma/client";
 import { IOptions, paginationHelper } from "../../helper/paginationHelper";
 import { prisma } from "../../shared/prisma";
@@ -9,6 +8,7 @@ import ApiError from "../../errors/ApiError";
 import { openai } from "../../helper/openRouter";
 import { extractJsonFromMessage } from "../../helper/extractJsonFromMessage";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getAllFromDB = async (filters: any, options: IOptions) => {
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(options);
@@ -45,6 +45,7 @@ const getAllFromDB = async (filters: any, options: IOptions) => {
   if (Object.keys(filterData).length > 0) {
     const filterConditions = Object.keys(filterData).map((key) => ({
       [key]: {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         equals: (filterData as any)[key],
       },
     }));
